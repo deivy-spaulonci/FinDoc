@@ -1,4 +1,8 @@
 package com.br.payments.domain.repository;
 
-public class ContaRepository {
+import com.br.payments.domain.model.Conta;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ContaRepository extends IRepository<Conta>{
 }

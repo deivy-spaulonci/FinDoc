@@ -14,14 +14,15 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "FORNECEDOR")
 public class Fornecedor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fornecedor_seq")
     @SequenceGenerator(name = "fornecedor_seq", sequenceName = "fornecedor_seq", allocationSize = 1)
+    @Column(name = "ID")
     private Long id;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = 255, nullable = false, name = "NOME")
     private String nome;
 
     @Column(length = 255, nullable = false, name = "RAZAO_SOCIAL")
@@ -29,11 +30,11 @@ public class Fornecedor implements Serializable {
 
     @Pattern(regexp = "[0-9]*")
     @Size(min = 14, max = 14)
-    @Column(length = 60, nullable = true)
+    @Column(length = 60, nullable = true, name = "CNPJ")
     private String cnpj;
 
     @Size(min = 14, max = 14)
-    @Column(length = 60, nullable = true)
+    @Column(length = 60, nullable = true, name = "CPF")
     private String cpf;
 
     @Column(length = 255, nullable = false, name = "CIDADE_CODIGO_IBGE")

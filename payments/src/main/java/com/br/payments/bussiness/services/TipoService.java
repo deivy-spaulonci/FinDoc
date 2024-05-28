@@ -1,30 +1,23 @@
 package com.br.payments.bussiness.services;
 
-import com.br.payments.bussiness.exception.TipoDespesaNotFound;
 import com.br.payments.domain.model.Tipo;
 import com.br.payments.domain.model.TipoDespesa;
 import com.br.payments.domain.repository.IRepositoryTipo;
-import com.br.payments.domain.repository.TipoContaRepository;
-import com.br.payments.domain.repository.TipoDespesaRepository;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class TipoService<T extends Tipo> {
 
     @Getter
     @Setter
-    private IRepositoryTipo iRepositoryTipo;
+    private IRepositoryTipo<T> iRepositoryTipo;
 
-    public TipoService(){
-        if(iRepositoryTipo == null){
-            iRepositoryTipo = getIRepositoryTipo();
-        }
+    public TipoService(IRepositoryTipo<T> iRepositoryTipo) {
+        this.iRepositoryTipo = iRepositoryTipo;
     }
 
     public List<T> findAll(){
@@ -36,15 +29,15 @@ public class TipoService<T extends Tipo> {
     }
 
     public T findById(Long id){
-        return iRepositoryTipo.findById(id).orElseThrow(TipoDespesaNotFound::new);
+        return  (T) iRepositoryTipo.findById(id).orElseThrow();
     }
 
     public T update(T t){
         findById(t.getId());
-        return iRepositoryTipo.save(t);
+        return (T) iRepositoryTipo.save(t);
     }
 
-    public TipoDespesa save(TipoDespesa tipoDespesa){
-        return iRepositoryTipo.save(tipoDespesa);
+    public T save(T t){
+        return (T) iRepositoryTipo.save(t);
     }
 }

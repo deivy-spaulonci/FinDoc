@@ -1,9 +1,8 @@
 package com.br.payments.api.mapper;
 
-import com.br.personaladm.api.dto.DespesaDTO;
-import com.br.personaladm.domain.model.Despesa;
+import com.br.payments.api.dto.DespesaDTO;
+import com.br.payments.domain.model.Despesa;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;

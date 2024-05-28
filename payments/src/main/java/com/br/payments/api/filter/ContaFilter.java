@@ -1,7 +1,7 @@
 package com.br.payments.api.filter;
 
-import com.br.personaladm.domain.model.ContaStatus;
-import com.br.personaladm.domain.model.tipo.TipoConta;
+import com.br.payments.domain.model.ContaStatus;
+import com.br.payments.domain.model.TipoConta;
 
 import java.time.LocalDate;
 

@@ -1,11 +1,10 @@
 package com.br.payments.api.restcontroller;
 
-import com.br.personaladm.api.config.Messages;
-import com.br.personaladm.api.dto.DespesaDTO;
-import com.br.personaladm.api.filter.DespesaFilter;
-import com.br.personaladm.api.mapper.DespesaMapper;
-import com.br.personaladm.business.service.DespesaService;
-import com.br.personaladm.domain.model.Despesa;
+import com.br.payments.api.dto.DespesaDTO;
+import com.br.payments.api.filter.DespesaFilter;
+import com.br.payments.api.mapper.DespesaMapper;
+import com.br.payments.bussiness.services.DespesaService;
+import com.br.payments.domain.model.Despesa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,7 @@ public class DespesaRestController {
         Optional<Despesa> despesa = despesaService.findById(id);
         return despesa.<ResponseEntity<Object>>map(value -> ResponseEntity.ok(despesaMapper.toDTO(value)))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(Messages.getMessage("retorno.despesa.vazio")));
+                        .body("nehuma despesa encontrada!"));
     }
 
     @GetMapping("/page")
@@ -79,7 +78,7 @@ public class DespesaRestController {
             return ResponseEntity.ok(despesaMapper.toDTO(despesa));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(Messages.getMessage("retorno.despesa.vazio"));
+                .body("nehuma despesa encontrada!");
     }
 
     @DeleteMapping("/{id}")
@@ -91,7 +90,7 @@ public class DespesaRestController {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(Messages.getMessage("retorno.despesa.vazio"));
+                .body("nehuma despesa encontrada!");
     }
 
 //    @GetMapping("/despesaPorTipo")

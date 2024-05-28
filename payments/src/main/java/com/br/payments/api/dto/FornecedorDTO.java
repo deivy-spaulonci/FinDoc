@@ -1,4 +1,4 @@
-package com.br.personaladm.api.dto;
+package com.br.payments.api.dto;
 
 
 import jakarta.validation.constraints.NotBlank;

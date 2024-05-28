@@ -1,7 +1,7 @@
 package com.br.payments.domain.specs;
 
-import com.br.personaladm.api.filter.DespesaFilter;
-import com.br.personaladm.domain.model.Despesa;
+import com.br.payments.api.filter.DespesaFilter;
+import com.br.payments.domain.model.Despesa;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

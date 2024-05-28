@@ -1,7 +1,5 @@
-package com.br.personaladm.domain.model;
+package com.br.payments.domain.model;
 
-import com.br.personaladm.domain.model.tipo.FormaPagamento;
-import com.br.personaladm.domain.model.tipo.TipoConta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,58 +9,47 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Conta implements Serializable, IPagamento {
+@Entity(name = "CONTA")
+public class Conta extends Pagamento implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "conta_seq")
     @SequenceGenerator(name = "conta_seq", sequenceName = "conta_seq", allocationSize = 1)
+    @Column(name = "ID")
     private Long id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "ID_TIPO_CONTA")
     private TipoConta tipoConta;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 60, nullable = false, name = "CODIGO_BARRA")
     private String codigoBarra;
 
-    @Column(nullable = false, columnDefinition = "DATE")
+    @Column(nullable = false, columnDefinition = "DATE", name = "EMISSAO")
     private LocalDate emissao;
 
-    @Column(nullable = false, columnDefinition = "DATE")
+    @Column(nullable = false, columnDefinition = "DATE", name = "VENCIMENTO")
     private LocalDate vencimento;
 
-    @Column(precision = 10, scale = 2, nullable = false)
-    private BigDecimal valor;
-
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = false, name = "PARCELA")
     private Integer parcela;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = false, name = "TOTAL_PARCELAS")
     private Integer totalParcelas;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "ID_FORMA_PAGAMENTO")
-    private FormaPagamento formaPagamento;
-
-    @Column(nullable = true, columnDefinition = "DATE")
-    private LocalDate dataPagamento;
-
-    @Column(precision = 10, scale = 2, nullable = true)
+    @Column(precision = 10, scale = 2, nullable = true, name = "MULTA")
     private BigDecimal multa;
 
-    @Column(length = 255, nullable = true)
-    private String obs;
+    @Column(name = "TITULO")
+    private byte[] titulo;
 
-    private String titulo;
-
-    private String comprovante;
+    @Column(name = "COMPROVANTE")
+    private byte[] comprovante;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinTable(name = "CONTA_FATURA",
@@ -70,6 +57,4 @@ public class Conta implements Serializable, IPagamento {
             inverseJoinColumns = @JoinColumn(name = "ID_FATURA"))
     private List<Fatura> faturas;
 
-    @Column(name = "DATA_LANCAMENTO", insertable = false, nullable = true, columnDefinition = "TIMESTAMP")
-    private LocalDateTime dataLancamento;
 }

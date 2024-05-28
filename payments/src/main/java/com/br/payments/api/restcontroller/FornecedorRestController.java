@@ -1,10 +1,9 @@
 package com.br.payments.api.restcontroller;
 
-import com.br.personaladm.api.config.Messages;
-import com.br.personaladm.api.dto.FornecedorDTO;
-import com.br.personaladm.api.mapper.FornecedorMapper;
-import com.br.personaladm.business.service.FornecedorService;
-import com.br.personaladm.domain.model.Fornecedor;
+import com.br.payments.api.dto.FornecedorDTO;
+import com.br.payments.api.mapper.FornecedorMapper;
+import com.br.payments.bussiness.services.FornecedorService;
+import com.br.payments.domain.model.Fornecedor;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
@@ -56,7 +55,7 @@ public class FornecedorRestController {
         Optional<Fornecedor> fornecedor = fornecedorService.findById(id);
         return fornecedor.<ResponseEntity<Object>>map(value -> ResponseEntity.ok(fornecedorMapper.toDTO(value)))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(Messages.getMessage("retorno.fornecedor.vazio")));
+                        .body("Nenhum fornecedor econtrado!"));
     }
     @PostMapping
     @Transactional
@@ -76,13 +75,13 @@ public class FornecedorRestController {
             return ResponseEntity.ok(fornecedorMapper.toDTO(fornecedor));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(Messages.getMessage("retorno.fornecedor.vazio"));
+                .body("Nenhum fornecedor econtrado!");
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<?> delete(@PathVariable Long id){
-        return ResponseEntity.ok(Messages.getMessage("permisao.excluir.fornecedor"));
+        return ResponseEntity.ok("Não ha permissao de exclusao do fornecedor!");
     }
 
     @GetMapping(value = "/consultacnpj", produces = MediaType.APPLICATION_JSON_VALUE)

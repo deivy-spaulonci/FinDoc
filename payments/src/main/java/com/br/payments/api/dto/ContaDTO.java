@@ -1,8 +1,9 @@
 package com.br.payments.api.dto;
 
-import com.br.personaladm.domain.model.*;
-import com.br.personaladm.domain.model.tipo.FormaPagamento;
-import com.br.personaladm.domain.model.tipo.TipoConta;
+import com.br.payments.domain.model.ContaStatus;
+import com.br.payments.domain.model.Fatura;
+import com.br.payments.domain.model.FormaPagamento;
+import com.br.payments.domain.model.TipoConta;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import jakarta.persistence.Transient;
@@ -12,7 +13,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -48,9 +48,9 @@ public class ContaDTO implements Serializable {
 
     private int parcela;
     private int totalParcelas;
-    private String titulo;
+    private byte[] titulo;
     private FormaPagamento formaPagamento;
-    private String comprovante;
+    private byte[] comprovante;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

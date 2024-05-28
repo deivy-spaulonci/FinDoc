@@ -1,8 +1,8 @@
 package com.br.payments.api.filter;
 
-import com.br.personaladm.domain.model.Fornecedor;
-import com.br.personaladm.domain.model.tipo.FormaPagamento;
-import com.br.personaladm.domain.model.tipo.TipoDespesa;
+import com.br.payments.domain.model.FormaPagamento;
+import com.br.payments.domain.model.Fornecedor;
+import com.br.payments.domain.model.TipoDespesa;
 
 import java.time.LocalDate;
 

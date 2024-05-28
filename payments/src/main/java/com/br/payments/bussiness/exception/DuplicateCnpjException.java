@@ -1,9 +1,7 @@
-package com.br.personaladm.business.exception;
-
-import com.br.personaladm.api.config.Messages;
+package com.br.payments.bussiness.exception;
 
 public class DuplicateCnpjException extends RuntimeException{
     public DuplicateCnpjException(){
-        super(Messages.getMessage("cnpj.duplicado"));
+        super("CNPJ Duplicado!");
     }
 }

@@ -1,28 +1,25 @@
 package com.br.payments.domain.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
+@EqualsAndHashCode(callSuper = true)
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class TipoConta implements Serializable, ITipo {
+@Table(name = "TIPO_CONTA")
+@SequenceGenerator(name = "tipo_conta_seq", sequenceName = "tipo_conta_seq", allocationSize = 1, initialValue = 1 )
+public class TipoConta extends Tipo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tipo_conta_seq")
-    @SequenceGenerator(name = "tipo_conta_seq", sequenceName = "tipo_conta_seq", allocationSize = 1, initialValue = 1 )
+    @Column(name = "ID")
     private Long id;
-
-    @Column(length = 255, nullable = false)
-    private String nome;
-
+    @Column(name = "CONTA_CARTAO")
     private Boolean contaCartao;
-
+    @Column(name = "ATIVA")
     private Boolean ativa;
 }

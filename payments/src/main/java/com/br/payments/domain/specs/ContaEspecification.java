@@ -1,8 +1,8 @@
 package com.br.payments.domain.specs;
 
-import com.br.personaladm.api.filter.ContaFilter;
-import com.br.personaladm.domain.model.Conta;
-import com.br.personaladm.domain.model.ContaStatus;
+import com.br.payments.api.filter.ContaFilter;
+import com.br.payments.domain.model.Conta;
+import com.br.payments.domain.model.ContaStatus;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;

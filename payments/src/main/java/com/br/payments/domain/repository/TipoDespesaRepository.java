@@ -1,4 +1,8 @@
 package com.br.payments.domain.repository;
 
-public class TipoDespesaRepository {
+import com.br.payments.domain.model.TipoDespesa;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TipoDespesaRepository extends IRepositoryTipo<TipoDespesa> {
 }

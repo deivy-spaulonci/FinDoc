@@ -1,7 +1,7 @@
-package com.br.personaladm.api.mapper;
+package com.br.payments.api.mapper;
 
-import com.br.personaladm.api.dto.FornecedorDTO;
-import com.br.personaladm.domain.model.Fornecedor;
+import com.br.payments.api.dto.FornecedorDTO;
+import com.br.payments.domain.model.Fornecedor;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -14,21 +13,22 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "FATURA")
 public class Fatura {
     @Id
+    @Column(name = "ID")
     private Long id;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = false, name = "PARCELA")
     private Integer parcela;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = false, name = "TOTAL_PARCELAS")
     private Integer totalParcelas;
 
-    @Column(nullable = false, columnDefinition = "DATE")
-    private LocalDate data;
+    @Column(nullable = false, columnDefinition = "DATE", name = "DATA_PAGAMENTO")
+    private LocalDate dataPagamento;
 
-    @Column(precision = 10, scale = 2, nullable = false)
+    @Column(precision = 10, scale = 2, nullable = false, name = "VALOR")
     private BigDecimal valor;
 
     @ManyToOne
