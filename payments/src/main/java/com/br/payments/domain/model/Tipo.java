@@ -5,6 +5,7 @@ import jakarta.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 @MappedSuperclass
-public class Tipo implements Serializable{
+public abstract class Tipo implements Serializable {
 
+    private String nome;
 }
